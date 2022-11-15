@@ -23,16 +23,19 @@ public struct AnalyticsEvent {
 }
 
 public protocol AnalyticsActionProtocol {
-    var event: AnalyticsEvent { get }
+    var event: AnalyticsEvent? { get }
 }
 
 public extension ReducerProtocol where Action: AnalyticsActionProtocol {
     func analyticsReducer() -> some ReducerProtocol<State, Action> {
         Reduce { state, action in
             let effects = self.reduce(into: &state, action: action)
+            guard let event = action.event else {
+                return effects
+            }
             return .merge(
                 .fireAndForget {
-                    Analytics.logEvent(action.event.name, parameters: action.event.parameters)
+                    Analytics.logEvent(event.name, parameters: event.parameters)
                 },
                 effects
             )

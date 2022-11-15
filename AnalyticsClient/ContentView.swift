@@ -15,6 +15,7 @@ struct ContentStore: ReducerProtocol {
     enum Action: Equatable {
         case onAppear
         case submitButtonTapped
+        case noEventTrackingAction
     }
     
     var body: some ReducerProtocol<State, Action> {
@@ -26,6 +27,9 @@ struct ContentStore: ReducerProtocol {
             case .submitButtonTapped:
                 // TODO: submit action
                 return .none
+                
+            case .noEventTrackingAction:
+                return .none
             }
         }
         .analyticsReducer()
@@ -33,7 +37,7 @@ struct ContentStore: ReducerProtocol {
 }
 
 extension ContentStore.Action: AnalyticsActionProtocol {
-    var event: AnalyticsEvent {
+    var event: AnalyticsEvent? {
         switch self {
         case .onAppear:
             return .screenView("Content View Screen", screenClass: "ContentView")
@@ -45,6 +49,8 @@ extension ContentStore.Action: AnalyticsActionProtocol {
                     "screenClass": "ContentView"
                 ]
             )
+        default:
+            return nil
         }
     }
 }
@@ -78,5 +84,6 @@ struct ContentView_Previews: PreviewProvider {
                 reducer: ContentStore()
             )
         )
+        
     }
 }
