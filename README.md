@@ -9,7 +9,7 @@ extension MyFeatureAction: AnalyticsActionProtocol {
 
     public var featureDescription { "My Feature" }
     
-    public enum AnalyticsAction: String {
+    public enum ActionDescription: String {
         case screenView = "my_feature_screen_view"
     
     public var event: AnalyticsEven? {
