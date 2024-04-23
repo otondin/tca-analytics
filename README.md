@@ -1,6 +1,6 @@
 # TCAFeatureAnalytics
 
-A TCA high-order reducer to easily integrate with Google Firebase Analytics.
+A TCA high-order reducer to easily integrate feature actions with Google Firebase Analytics.
 
 ## Requirements
 
