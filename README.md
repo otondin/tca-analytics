@@ -2,10 +2,26 @@
 
 A TCA high-order reducer to easily integrate with Google Firebase Analytics.
 
-Example:
+## Usage example:
+
+### Parent Feature
 
 ```swift
-extension MyFeatureAction: AnalyticsActionProtocol {
+import FeatureAnalytics
+
+@Reducer
+struct MyFeature {
+    ...
+    var body: some ReducerOf<Self> {
+        ...
+        AnalyticsReducer()
+    }
+}
+```
+### Feature Action Extension
+
+```swift
+extension MyFeature.Action: AnalyticsActionProtocol {
 
     public var featureDescription { "My Feature" }
     
