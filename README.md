@@ -11,11 +11,16 @@ extension MyFeatureAction: AnalyticsActionProtocol {
     
     public enum ActionDescription: String {
         case screenView = "my_feature_screen_view"
+        case actionA = "action_a"
+    }
     
     public var event: AnalyticsEven? {
         switch self {
         case .onAppear:
             return .screenView(AnalyticsAction.screenView.rawValue)
+            
+        case .actionA:
+            return .action(ActionDescription.actionA.rawValue, from: featureDescrition)
         
         default:
             return nil
