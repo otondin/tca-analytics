@@ -34,14 +34,14 @@ public struct AnalyticsEvent {
     }
 }
 
-public protocol AnalyticsActionProtocol {
+public protocol AnalyticsActionCapable {
     associatedtype ActionDescription: RawRepresentable where ActionDescription.RawValue == String
     var featureDescription: String { get }
     var event: AnalyticsEvent? { get }
 }
 
 @Reducer
-public struct AnalyticsReducer<State, Action> where Action: AnalyticsActionProtocol {
+public struct AnalyticsReducer<State, Action> where Action: AnalyticsActionCapable {
     
     public init() {}
     

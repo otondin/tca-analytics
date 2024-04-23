@@ -34,7 +34,7 @@ struct MyFeature {
 ### Feature Action Extension
 
 ```swift
-extension MyFeature.Action: AnalyticsActionProtocol {
+extension MyFeature.Action: AnalyticsActionCapable {
 
     public var featureDescription { "My Feature" }
     
