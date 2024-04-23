@@ -1,11 +1,11 @@
 # TCAFeatureAnalytics
 
+A TCA high-order reducer to easily integrate with Google Firebase Analytics.
+
 ## Requirements
 
 - iOS 16+
 - Swift 5.9+
-
-A TCA high-order reducer to easily integrate with Google Firebase Analytics.
 
 ## Usage example:
 
