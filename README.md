@@ -11,7 +11,15 @@ import FeatureAnalytics
 
 @Reducer
 struct MyFeature {
+
     ...
+    
+    enum Action {
+        case onAppear
+        case actionA
+        case actionB
+    }
+    
     var body: some ReducerOf<Self> {
         ...
         AnalyticsReducer()
